@@ -1,13 +1,15 @@
 #Written by Eric Bell
 #2/7/17
 #
-#regress.py is a neural network trainer that spits out what features of a molecule are most important to predicting a good
+#regress.py is a regression model trainer that prints the fit and order of the features of a molecule by their weights
+
 from sklearn import linear_model
 from sklearn.feature_selection import VarianceThreshold
-from sklearn.svm import SVR
 import numpy as np
 from sys import argv
 from math import sqrt
+
+#initialize both training and test set
 attrlist = []
 values=[]
 testlist=[]
@@ -17,8 +19,9 @@ if len(argv) < 2:
     print("Need filename argument")
     exit(1)
 
-f = open(argv[1],"r")
+f = open(argv[1],"r") #argument 1 is the training set file name
 
+#read in the training set
 #print("Reading files")
 for i,line in enumerate(f):
     contents = line.split(",")
@@ -35,8 +38,10 @@ for i,line in enumerate(f):
 f.close()
 #print(attrlist[0])
 #print(len(attrlist[0]))
-t=open(argv[2],"r")
 
+t=open(argv[2],"r") #argument 2 is the test set file name
+
+#read in the test set (although the test set is redundant when the mean and sd determination is commented out)
 for i,line in enumerate(t):
     contents = line.split(",")
     if len(contents) != 3:
@@ -55,10 +60,11 @@ t.close()
 #for i in attrlist:
 #    sweights.append(float(sum(i))/float(len(i)))
 
+#filter out any values that are always 0 or 1, they muddy the fit
 sel=VarianceThreshold(threshold=1*(1-1))
 sel.fit(attrlist)
 variances=sel.variances_
-varindex=[]
+varindex=[] #we need to keep track of the indices, they represent the position in the bit string
 for i in range(len(variances)):
     if variances[i] > 0:
         varindex.append(i)
@@ -66,19 +72,19 @@ for i in range(len(variances)):
 attrlist=sel.transform(attrlist)
 testlist=sel.transform(testlist)
 
-cin=[0.]*len(attrlist[0])
+#cin=[0.]*len(attrlist[0])
 #print(sweights)
 #print("Fitting regression")
-net = linear_model.LinearRegression()
+net = linear_model.LinearRegression() #definition of the regression model
 #net=linear_model.Lasso()
 #net=linear_model.Ridge()
 #net=linear_model.SGDRegressor()
-#net=SVR()
-net.fit(attrlist,values)#,coef_init=cin)
-rs=net.score(attrlist,values)
+net.fit(attrlist,values)#,coef_init=cin) #training the regression model
+rs=net.score(attrlist,values) #determining R^2
 #print(net.intercept_)
-print(rs)
+print(rs) #print R^2
 
+#create the feature/weight list
 weights = net.coef_
 
 sortlist=[]  
@@ -86,12 +92,15 @@ for i,weight in enumerate(weights):
     sortlist.append([varindex[i],weight])
     #sortlist.append([i,weight])
     
-sortlist.sort(key=lambda x: x[1])
+sortlist.sort(key=lambda x: x[1]) #sort the feature/weight list by the weights
 
+#print the sorted list
 for i in range(len(sortlist)):
 #for i in range(10):
     if sortlist[i][1]!=0:
         print(sortlist[i])
+
+#determines the mean and standard deviation of the distance between the actual point and the predicted binding affininty
 '''
 mean=0
 var=0
