@@ -40,7 +40,7 @@ for line in f:
     for i,part in enumerate(parts):
         parts[i]=part.replace("\"","")
     parts.append(fetchEnergy(parts[0]))
-    w.write(parts[0]+","+parts[1].strip()+","+parts[2]+"\n")
+    w.write(parts[0]+","+parts[1].strip()+","+parts[2])
 
 f.close()
 w.close()
