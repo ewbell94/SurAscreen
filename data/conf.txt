@@ -1,0 +1,14 @@
+receptor = ../dP2.pdbqt
+ligand = paper7mer.pdbqt
+
+size_x = 86
+size_y = 54
+size_z = 60
+
+center_x = 93.606
+center_y = 57.496
+center_z = -16.900
+
+out = results.pdbqt
+
+exhaustiveness = 8
