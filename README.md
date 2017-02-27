@@ -3,7 +3,7 @@ This repository contains information relevant to Eric Bell's Honors in Biochemis
 
 ## Repository Contents
 
-1. Bash
++ Bash
   * a
   * b
   * c
