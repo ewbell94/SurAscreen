@@ -1,3 +1,8 @@
+#Written by Eric Bell
+#1/17/17
+#
+#chemmine.R declares functions that interface with chemmineR, chemmineOB, and fmcsR
+
 #Load required packages
 library("ChemmineR")
 library("ChemmineOB")
@@ -8,7 +13,8 @@ loadsdf<-function(sdffile){
   sdfset<-read.SDFset(sdffile)
   valid<-validSDF(sdfset)
   sdfset<-regenerateCoords(sdfset[valid])
-  return(sdfset)
+  apset<-sdf2ap(sdfset)
+  return(apset)
 }
 
 #writes a .csv file using built in atom pair fingerprints
@@ -34,15 +40,11 @@ writeobfp<-function(sdffile,fptype="FP4"){
   write.table(as.character(fpset),"set.csv",sep=",")
 }
 
-sdfset <- loadsdf("mega.sdf")
-apset <- sdf2ap(sdfset)
-fpset<-desc2fp(apset)
+apset <- loadsdf("mega.sdf") #this file contains the top hits (>3 SD's outside of the mean)
 
 #The similarity coefficient is defined as c/(a+b+c), which is the proportion of the atom pairs shared among two compounds divided by their union. 
 #The variable c is the number of atom pairs common in both compounds, while a and b are the numbers of their unique atom pairs.
-fclusters<- cmp.cluster(db=fpset, cutoff = 0.8)
 clusters <- cmp.cluster(db=apset, cutoff = 0.6)
-cluster.sizestat(fclusters, cluster.result=1)
 cluster.visualize(apset, clusters, cluster.result=1, size.cutoff=10) #plots the clusters bigger than 10
 
 #hierarchical clustering, not used because the tree is too big
@@ -127,12 +129,14 @@ binCluster<-function(apset, neighbors=6, k=5){
 }
 
 #Plot atom frequencies
-propma <- atomcountMA(sdfset, addH=FALSE) 
-boxplot(propma, col="blue", main="Atom Frequency") 
-boxplot(rowSums(propma), main="All Atom Frequency") 
+plotFreq<-function(){
+    propma <- atomcountMA(sdfset, addH=FALSE) 
+    boxplot(propma, col="blue", main="Atom Frequency") 
+    boxplot(rowSums(propma), main="All Atom Frequency") 
+}
 
-coord <- cluster.visualize(apset, clusters, size.cutoff=10, dimensions=3) 
-scatterplot3d(coord)
+#coord <- cluster.visualize(apset, clusters, size.cutoff=10, dimensions=3) 
+#scatterplot3d(coord)
 
 #write ob fingerprints for each sdfset uploaded
 for (i in 1:length(sets)){
