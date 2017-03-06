@@ -1,3 +1,8 @@
+#Written by Eric Bell
+#6/21/16
+#
+#energystats.py returns the mean and SD of the binding affinities of a res.txt
+
 import sys
 import math
 
