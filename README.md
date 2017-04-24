@@ -12,16 +12,21 @@ This repository contains information relevant to Eric Bell's Honors in Biochemis
   * **unzipper.sh** processes the .sdf.gz files taken from the ZINC library and turns them into zipped directories (.tar.gz)
   * **usual.sdf.gz** is the script provided by ZINC to download every segment of the "Drugs Now" subset of the ZINC12 library
 + **Data**
-  * **apres.txt** is a results file of the fingerprinting regression using atom pairs
+  * **bottomfeat.txt** is a list of the bottom 10 features as predicted by the regression from **finalres.txt**
   * **conf.txt** is a parameter file used to run AutoDock Vina
   * **dP2.pdb** is a structure file containing the delta-P2 structure of SurA from the PDB
   * **dP2.pdbqt** is **dP2.pdb** converted into the filetype accepted by AutoDock Vina
   * **final.txt** is a sorted results file produced by **sort.sh**
+  * **finalres.txt** is the scores of each feature output by the regression
+  * **guide.txt** is the list of features corresponding to each bit position in the "FP4" fingerprint
   * **job.index** is a list of jobs to be run in an array, produced by Raccoon2
+  * **mega.sdf** structure files for all molecules with predicted binding affinities equal to or better than -9.2 kcal/mol
   * **reflist.txt** is the list of ZINC library segments to be run through **genres.py**
   * **res.txt** is a results file from a virtual screen.  The formatting of this file is referred to as "res-like"
   * **results.html** is a file openable in a web browser that presents information about the top hits of the virtual screen
+  * **SMARTS_InteLigand.txt** is the definition file of the "FP4" fingerprint protocol in OpenBabel 
   * **thresh.txt** is a res-like file containing all molecules above the threshold specified in **thresh.py**
+  * **topfeat.txt** is a list of the top 10 features as predicted by the regression from **finalres.txt**
 + **Python**
   * **energystats.py** calculates the mean and standard deviation of the binding affinity of any res-like file
   * **genres.py** creates **results.html** based off of the res.txt files in the directories specified by **reflist.txt**

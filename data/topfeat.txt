@@ -1,0 +1,15 @@
+Aromatic: a
+Diarylether: [c][OX2][c]
+Annelated_rings: [R;$(*(@*)(@*)@*);!$([R2;$(*(@*)(@*)(@*)@*)])]@[R;$(*(@*)(@*)@*);!$([R2;$(*(@*)(@*)(@*)@*)])]
+Rotatable_bond: [!$(*#*)&!D1]-!@[!$(*#*)&!D1]
+Conjugated_tripple_bond: *#*[*]=,#,:[*]
+Semicarbazide: [#7X3][#7X3][#6X3]([#7X3;!$([#7][#7])])=[OX1]
+Alkyl_imide: [#6X3;$([H0][#6]),$([H1])](=[OX1])[#7X3H0]([#6])[#6X3;$([H0][#6]),$([H1])](=[OX1])
+Tertiary_mixed_amine: [NX3H0+0,NX4H1+;$([N]([c])([C])[#6]);!$([N]*~[#7,#8,#15,#16])]
+Arylfluoride: [F][c]
+Secondary_amide: [CX3;$([R0][#6]),$([H1R0])](=[OX1])[#7X3H1][#6;!$(C=[O,N,S])]
+Tertiary_amide: [CX3;$([R0][#6]),$([H1R0])](=[OX1])[#7X3H0]([#6;!$(C=[O,N,S])])[#6;!$(C=[O,N,S])]
+Sulfonic_derivative: [SX4;$([H1]),$([H0][#6])](=[!#6])(=[!#6])[!#6]
+Hydrazone: [NX3;$([H2]),$([H1][#6]),$([H0]([#6])[#6]);!$(NC=[O,N,S])][NX2]=[#6]
+Urea:[#7X3;!$([#7][!#6])][#6X3](=[OX1])[#7X3;!$([#7][!#6])]
+Trifluoromethyl: [FX1][CX4;!$([H0][Cl,Br,I]);!$([F][C]([F])([F])[F])]([FX1])([FX1])

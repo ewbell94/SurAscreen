@@ -1,4 +1,8 @@
 #!/bin/bash
+#Written by Eric Bell
+#3/15/17
+#
+#assemblefpt.sh compiles a file of the generated fingerprints of all molecules in a res.txt
 
 FILE="$1"
 

@@ -1,9 +1,8 @@
+#!/usr/bin/bash
 #Written by Eric Bell
 #6/16/16
 #
 #Procres.sh does all the processing of a result from a raccoon screen
-
-#!/usr/bin/bash
 
 echo "Fetching" #fetch tar.gz from supercomputer
 for arg in "$@"; do
