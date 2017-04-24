@@ -4,6 +4,7 @@ This repository contains information relevant to Eric Bell's Honors in Biochemis
 ## Repository Contents
 
 + **Bash**
+  * **assemblefpt.sh** creates an aggregate .fpt structure file from the molecules specified in a res-like file
   * **assemblesdf.sh** creates an aggregate .sdf structure file from the molecules specified in a res-like file
   * **fetchlib.sh** fetches tar files from the sciurus server and decompresses them
   * **procres.sh** processes results of a segment of the ZINC library
@@ -25,7 +26,7 @@ This repository contains information relevant to Eric Bell's Honors in Biochemis
   * **energystats.py** calculates the mean and standard deviation of the binding affinity of any res-like file
   * **genres.py** creates **results.html** based off of the res.txt files in the directories specified by **reflist.txt**
   * **ligsort.py** sorts a res-like file and returns a user specified number of top hits (set to 1000 in **sort.sh**)
-  * **proccsv.py** processes .csv files and adds binding affinity information for use in regression
+  * **procfpt.py** processes .fpt files and adds binding affinity information for use in regression
   * **randomset.py** generates random sets of molecules from an aggregate res-like file
   * **regres.py** compiles results from different regressions into one results file
   * **regress.py** runs a regression on a set of molecules specified in a .csv file

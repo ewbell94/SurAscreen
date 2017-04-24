@@ -1,3 +1,8 @@
+#Written by Eric Bell
+#1/6/17
+#
+#thresh.py fetches all molecules above a threshold
+
 import sys
 
 args = sys.argv
