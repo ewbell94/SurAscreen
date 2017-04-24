@@ -1,0 +1,17 @@
+ul  {
+    list-style: none;
+    width: 475px;
+    max-width: 475px;
+    float: none;
+    clear: none;
+    font: inherit;
+}
+
+img {
+	height: auto;
+	width: 400px;
+}
+
+h4 {
+	pointer-events: none;
+}

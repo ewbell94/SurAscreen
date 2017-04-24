@@ -24,7 +24,8 @@ This repository contains information relevant to Eric Bell's Honors in Biochemis
   * **reflist.txt** is the list of ZINC library segments to be run through **genres.py**
   * **res.txt** is a results file from a virtual screen.  The formatting of this file is referred to as "res-like"
   * **results.html** is a file openable in a web browser that presents information about the top hits of the virtual screen
-  * **SMARTS_InteLigand.txt** is the definition file of the "FP4" fingerprint protocol in OpenBabel 
+  * **SMARTS_InteLigand.txt** is the definition file of the "FP4" fingerprint protocol in OpenBabel
+  * **style.css** is a stylesheet to help format **results.html**
   * **thresh.txt** is a res-like file containing all molecules above the threshold specified in **thresh.py**
   * **topfeat.txt** is a list of the top 10 features as predicted by the regression from **finalres.txt**
 + **Python**
