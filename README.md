@@ -34,8 +34,5 @@
   * **regres.py** compiles results from different regressions into one results file
   * **regress.py** runs a regression on a set of molecules specified in a .csv file
   * **thresh.py** returns all molecules from a sorted res-like file that meet a binding affinity threshold
-+ **R**
-  * **chemmine.R** declares every function that interfaces with ChemmineR, ChemmineOB, and fmcsR
-  * **installpackages.R** installs the packages required for proper functionality of **chemmine.R**
 
   
